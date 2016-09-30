@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Hub {
 
@@ -42,6 +44,29 @@ public class Hub {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		JButton btnCreacionPj = new JButton("Crear Nuevo");
+		btnCreacionPj.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnCreacionPj.setBounds(60, 45, 107, 23);
+		frame.getContentPane().add(btnCreacionPj);
+		
+		JButton btnPelea = new JButton("Iniciar combate");
+		btnPelea.setBounds(249, 45, 124, 23);
+		frame.getContentPane().add(btnPelea);
+		
+		JButton Nada = new JButton("Lista Pjs");
+		Nada.setBounds(60, 176, 107, 23);
+		frame.getContentPane().add(Nada);
+		
+		JButton salir = new JButton("Salir");
+		salir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		salir.setBounds(249, 176, 124, 23);
+		frame.getContentPane().add(salir);
 	}
-
 }

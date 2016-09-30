@@ -1,6 +1,10 @@
 package entidades;
 
 public class Personaje {
+	public Personaje(int HP,int DEF,int EVA,int ATK, int ENE,String NOM){
+		
+	};
+	
 	private int id;
 	private int atk, def, ene, eva, hp;
 	private String nombre;
