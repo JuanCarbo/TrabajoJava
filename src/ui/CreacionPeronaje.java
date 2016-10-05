@@ -9,11 +9,12 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class CreacionPeronaje {
 
 	private JFrame frame;
-	private JTextField idfield;
 	private JTextField enefield;
 	private JTextField namefield;
 	private JTextField atkField;
@@ -50,75 +51,120 @@ public class CreacionPeronaje {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 205, 374);
+		frame.setBounds(100, 100, 230, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		idfield = new JTextField();
-		idfield.setBounds(50, 51, 86, 20);
-		frame.getContentPane().add(idfield);
-		idfield.setColumns(10);
-		
 		enefield = new JTextField();
-		enefield.setBounds(91, 123, 86, 20);
+		enefield.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				char c=arg0.getKeyChar();
+				if (!(Character.isDigit(c))||(c==KeyEvent.VK_BACK_SPACE)||(c==KeyEvent.VK_DELETE))
+						{
+						arg0.consume();}
+						
+			}
+		});
+		enefield.setBounds(95, 57, 86, 20);
 		frame.getContentPane().add(enefield);
 		enefield.setColumns(10);
 		
 		namefield = new JTextField();
-		namefield.setBounds(91, 92, 86, 20);
+		namefield.setBounds(95, 26, 86, 20);
 		frame.getContentPane().add(namefield);
 		namefield.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("ID:");
-		lblNewLabel.setBounds(30, 54, 20, 14);
-		frame.getContentPane().add(lblNewLabel);
-		
 		JLabel nombreLabel = new JLabel("Nombre:");
-		nombreLabel.setBounds(35, 95, 46, 14);
+		nombreLabel.setBounds(39, 29, 46, 14);
 		frame.getContentPane().add(nombreLabel);
 		
 		JLabel eneLabel = new JLabel("Energ\u00EDa:");
-		eneLabel.setBounds(35, 126, 46, 14);
+		eneLabel.setBounds(39, 60, 46, 14);
 		frame.getContentPane().add(eneLabel);
 		
 		atkField = new JTextField();
+		atkField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				char c=arg0.getKeyChar();
+				if (!(Character.isDigit(c))||(c==KeyEvent.VK_BACK_SPACE)||(c==KeyEvent.VK_DELETE))
+						{
+						arg0.consume();}
+						
+			}
+		});
 		atkField.setColumns(10);
-		atkField.setBounds(91, 185, 86, 20);
+		atkField.setBounds(95, 119, 86, 20);
 		frame.getContentPane().add(atkField);
 		
 		defField = new JTextField();
+		defField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				char c=arg0.getKeyChar();
+				if (!(Character.isDigit(c))||(c==KeyEvent.VK_BACK_SPACE)||(c==KeyEvent.VK_DELETE))
+						{
+						arg0.consume();}
+						
+			}
+		});
 		defField.setColumns(10);
-		defField.setBounds(91, 154, 86, 20);
+		defField.setBounds(95, 88, 86, 20);
 		frame.getContentPane().add(defField);
 		
 		JLabel defLabel = new JLabel("Defensa:");
-		defLabel.setBounds(35, 157, 46, 14);
+		defLabel.setBounds(39, 91, 46, 14);
 		frame.getContentPane().add(defLabel);
 		
 		JLabel atkLabel = new JLabel("Ataque:");
-		atkLabel.setBounds(35, 188, 46, 14);
+		atkLabel.setBounds(39, 122, 46, 14);
 		frame.getContentPane().add(atkLabel);
 		
 		hpField = new JTextField();
+		hpField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				char c=arg0.getKeyChar();
+				if (!(Character.isDigit(c))||(c==KeyEvent.VK_BACK_SPACE)||(c==KeyEvent.VK_DELETE))
+						{
+						arg0.consume();}
+						
+			}
+		});
 		hpField.setColumns(10);
-		hpField.setBounds(91, 247, 86, 20);
+		hpField.setBounds(95, 181, 86, 20);
 		frame.getContentPane().add(hpField);
 		
 		evaField = new JTextField();
+		evaField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				char c=arg0.getKeyChar();
+				if (!(Character.isDigit(c))||(c==KeyEvent.VK_BACK_SPACE)||(c==KeyEvent.VK_DELETE))
+						{
+						arg0.consume();}
+						
+			}
+		});
 		evaField.setColumns(10);
-		evaField.setBounds(91, 216, 86, 20);
+		evaField.setBounds(95, 150, 86, 20);
 		frame.getContentPane().add(evaField);
 		
 		JLabel evaLabel = new JLabel("Evasi\u00F3n:");
-		evaLabel.setBounds(35, 219, 46, 14);
+		evaLabel.setBounds(39, 153, 46, 14);
 		frame.getContentPane().add(evaLabel);
 		
 		JLabel hpLabel = new JLabel("Hp:");
-		hpLabel.setBounds(35, 250, 46, 14);
+		hpLabel.setBounds(39, 184, 46, 14);
 		frame.getContentPane().add(hpLabel);
 		
 		JButton guardarBtn = new JButton("Guardar");
-		guardarBtn.setBounds(6, 300, 75, 23);
+		guardarBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		guardarBtn.setBounds(10, 234, 75, 23);
 		frame.getContentPane().add(guardarBtn);
 		
 		JButton rtrnBtn = new JButton("Volver");
@@ -126,7 +172,12 @@ public class CreacionPeronaje {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		rtrnBtn.setBounds(114, 300, 75, 23);
+		rtrnBtn.setBounds(118, 234, 75, 23);
 		frame.getContentPane().add(rtrnBtn);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(51, 54, 46, 14);
+		frame.getContentPane().add(lblNewLabel_1);
+		
 	}
 }
