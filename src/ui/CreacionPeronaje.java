@@ -17,6 +17,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class CreacionPeronaje {
+	//ventana principal de creacion de personaje. 
 
 	private JFrame frame;
 	private JTextField enefield;
@@ -58,12 +59,12 @@ public class CreacionPeronaje {
 		frame.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosed(WindowEvent arg0) {
-				Hub.main(null);
+				//Hub.main(null);
 			}
 		});
 		frame.setResizable(false);
 		frame.setBounds(100, 100, 230, 327);
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		enefield = new JTextField();
@@ -93,11 +94,11 @@ public class CreacionPeronaje {
 		namefield.setColumns(10);
 		
 		JLabel nombreLabel = new JLabel("Nombre:");
-		nombreLabel.setBounds(39, 29, 46, 14);
+		nombreLabel.setBounds(27, 29, 58, 14);
 		frame.getContentPane().add(nombreLabel);
 		
 		JLabel eneLabel = new JLabel("Energ\u00EDa:");
-		eneLabel.setBounds(39, 60, 46, 14);
+		eneLabel.setBounds(27, 60, 58, 14);
 		frame.getContentPane().add(eneLabel);
 		
 		atkField = new JTextField();
@@ -141,11 +142,11 @@ public class CreacionPeronaje {
 		frame.getContentPane().add(defField);
 		
 		JLabel defLabel = new JLabel("Defensa:");
-		defLabel.setBounds(39, 91, 46, 14);
+		defLabel.setBounds(27, 91, 58, 14);
 		frame.getContentPane().add(defLabel);
 		
 		JLabel atkLabel = new JLabel("Ataque:");
-		atkLabel.setBounds(39, 122, 46, 14);
+		atkLabel.setBounds(27, 122, 58, 14);
 		frame.getContentPane().add(atkLabel);
 		
 		hpField = new JTextField();
@@ -189,20 +190,20 @@ public class CreacionPeronaje {
 		frame.getContentPane().add(evaField);
 		
 		JLabel evaLabel = new JLabel("Evasi\u00F3n:");
-		evaLabel.setBounds(39, 153, 46, 14);
+		evaLabel.setBounds(27, 153, 58, 14);
 		frame.getContentPane().add(evaLabel);
 		
 		JLabel hpLabel = new JLabel("Hp:");
-		hpLabel.setBounds(39, 184, 46, 14);
+		hpLabel.setBounds(27, 184, 58, 14);
 		frame.getContentPane().add(hpLabel);
 		
 		JButton guardarBtn = new JButton("Guardar");
 		guardarBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				if (Control.nuevoPJ(hpField.getText(), defField.getText(), atkField.getText(), evaField.getText(), enefield.getText(), namefield.getText()) == 0) {;
+				Control.nuevoPJ('0'+hpField.getText(), '0'+defField.getText(), '0'+atkField.getText(), '0'+evaField.getText(), '0'+enefield.getText(), namefield.getText());
 				frame.dispose();};
-			}
+			
 		});
 		guardarBtn.setBounds(10, 264, 87, 23);
 		frame.getContentPane().add(guardarBtn);
@@ -211,6 +212,7 @@ public class CreacionPeronaje {
 		rtrnBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
+				Hub.main(null);
 				frame.dispose();
 			}
 		});

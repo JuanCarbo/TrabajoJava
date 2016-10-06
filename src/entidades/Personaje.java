@@ -1,13 +1,23 @@
 package entidades;
 
 public class Personaje {
-	public Personaje(int HP,int DEF,int EVA,int ATK, int ENE,String NOM){
-		
-	};
 	
+	public Personaje() {
+		// TODO Auto-generated constructor stub
+	}
+
 	private int id;
 	private int atk, def, ene, eva, hp;
 	private String nombre;
+
+	public Personaje(int HP,int DEF,int EVA,int ATK, int ENE,String NOM){
+		this.hp=HP;
+		this.atk=ATK;
+		this.def=DEF;
+		this.ene=ENE;
+		this.eva=EVA;
+		this.nombre=NOM;
+	};
 	public int getId() {
 		return id;
 	}

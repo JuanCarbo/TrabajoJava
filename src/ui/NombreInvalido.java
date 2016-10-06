@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ConfirmacionPje {
+public class NombreInvalido {
 
 	private JFrame frame;
 
@@ -21,7 +21,7 @@ public class ConfirmacionPje {
 			public void run() {
 				try {
 					int ide = 0;
-					ConfirmacionPje window = new ConfirmacionPje(ide);
+					NombreInvalido window = new NombreInvalido(ide);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,7 @@ public class ConfirmacionPje {
 			EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ConfirmacionPje window = new ConfirmacionPje(ide);
+					NombreInvalido window = new NombreInvalido(ide);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class ConfirmacionPje {
 	/**
 	 * Create the application.
 	 */
-	public ConfirmacionPje(int ide) {
+	public NombreInvalido(int ide) {
 		initialize(ide);
 	}
 
@@ -88,7 +88,7 @@ public class ConfirmacionPje {
 		labelID.setBounds(64, 43, 68, 14);
 		frame.getContentPane().add(labelID);
 		System.out.println(String.valueOf(id));
-		labelID.setText(String.valueOf(id));
+		labelID.setText("nombre Invalido");
 		
 		JLabel lblIdN = new JLabel("ID N\u00BA:");
 		lblIdN.setBounds(10, 43, 44, 14);
