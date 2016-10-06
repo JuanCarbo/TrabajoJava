@@ -13,8 +13,11 @@ public class Control {
 			entidades.Personaje pers= new entidades.Personaje(HP, DEF, EVA, ATK, ENE, NOM);
 			id=data.DBInteract.guardarpers(pers);
 			};
-			
+			ui.ConfirmacionPje.confirma(id);
 			return id;
 		};
 		public void turnoCombate(){};
+		public static void inicializaDB(){};
 }
+
+

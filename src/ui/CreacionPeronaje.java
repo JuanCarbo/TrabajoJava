@@ -200,7 +200,8 @@ public class CreacionPeronaje {
 		guardarBtn.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				Control.nuevoPJ(hpField.getText(), defField.getText(), atkField.getText(), evaField.getText(), enefield.getText(), namefield.getText());
+				if (Control.nuevoPJ(hpField.getText(), defField.getText(), atkField.getText(), evaField.getText(), enefield.getText(), namefield.getText()) == 0) {;
+				frame.dispose();};
 			}
 		});
 		guardarBtn.setBounds(10, 264, 87, 23);
