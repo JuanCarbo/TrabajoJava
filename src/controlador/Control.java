@@ -2,9 +2,14 @@ package controlador;
 
 public class Control {
 
-		public int nuevoPJ(int HP, int DEF, int ATK, int EVA, int ENE, String NOM){
+		public static int nuevoPJ(String HPs, String DEFs, String ATKs, String EVAs, String ENEs, String NOM){
 			int id=0;
-			if (true) {
+			int HP=Integer.parseInt(HPs);
+			int DEF=Integer.parseInt(DEFs);
+			int ATK=Integer.parseInt(ATKs);
+			int EVA=Integer.parseInt(EVAs);
+			int ENE=Integer.parseInt(ENEs);
+			if (HP+DEF+ATK+EVA+ENE<=200 && DEF<=80) {
 			entidades.Personaje pers= new entidades.Personaje(HP, DEF, EVA, ATK, ENE, NOM);
 			data.DBInteract basedatos = new data.DBInteract();
 			id=basedatos.guardarpers(pers);

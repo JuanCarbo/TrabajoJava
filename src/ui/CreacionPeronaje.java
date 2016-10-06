@@ -4,13 +4,17 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
-import java.awt.BorderLayout;
+
+import controlador.Control;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class CreacionPeronaje {
 
@@ -21,6 +25,7 @@ public class CreacionPeronaje {
 	private JTextField defField;
 	private JTextField hpField;
 	private JTextField evaField;
+	private JLabel lblRestantes;
 
 	/**
 	 * Launch the application.
@@ -50,9 +55,15 @@ public class CreacionPeronaje {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent arg0) {
+				Hub.main(null);
+			}
+		});
 		frame.setResizable(false);
-		frame.setBounds(100, 100, 230, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setBounds(100, 100, 230, 327);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		enefield = new JTextField();
@@ -63,9 +74,15 @@ public class CreacionPeronaje {
 				if (!(Character.isDigit(c))||(c==KeyEvent.VK_BACK_SPACE)||(c==KeyEvent.VK_DELETE))
 						{
 						arg0.consume();}
-						
+						}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				lblRestantes.setText(String.valueOf((200-Integer.parseInt('0'+enefield.getText())-Integer.parseInt('0'+atkField.getText())-Integer.parseInt('0'+defField.getText())
+						-Integer.parseInt('0'+hpField.getText())-Integer.parseInt('0'+evaField.getText()))));
 			}
-		});
+			}
+		
+		);
 		enefield.setBounds(95, 57, 86, 20);
 		frame.getContentPane().add(enefield);
 		enefield.setColumns(10);
@@ -90,8 +107,13 @@ public class CreacionPeronaje {
 				char c=arg0.getKeyChar();
 				if (!(Character.isDigit(c))||(c==KeyEvent.VK_BACK_SPACE)||(c==KeyEvent.VK_DELETE))
 						{
-						arg0.consume();}
+						arg0.consume();};
 						
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				lblRestantes.setText(String.valueOf((200-Integer.parseInt('0'+enefield.getText())-Integer.parseInt('0'+atkField.getText())-Integer.parseInt('0'+defField.getText())
+						-Integer.parseInt('0'+hpField.getText())-Integer.parseInt('0'+evaField.getText()))));
 			}
 		});
 		atkField.setColumns(10);
@@ -107,6 +129,11 @@ public class CreacionPeronaje {
 						{
 						arg0.consume();}
 						
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				lblRestantes.setText(String.valueOf((200-Integer.parseInt('0'+enefield.getText())-Integer.parseInt('0'+atkField.getText())-Integer.parseInt('0'+defField.getText())
+						-Integer.parseInt('0'+hpField.getText())-Integer.parseInt('0'+evaField.getText()))));
 			}
 		});
 		defField.setColumns(10);
@@ -128,8 +155,13 @@ public class CreacionPeronaje {
 				char c=arg0.getKeyChar();
 				if (!(Character.isDigit(c))||(c==KeyEvent.VK_BACK_SPACE)||(c==KeyEvent.VK_DELETE))
 						{
-						arg0.consume();}
+						arg0.consume();};
 						
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				lblRestantes.setText(String.valueOf((200-Integer.parseInt('0'+enefield.getText())-Integer.parseInt('0'+atkField.getText())-Integer.parseInt('0'+defField.getText())
+						-Integer.parseInt('0'+hpField.getText())-Integer.parseInt('0'+evaField.getText()))));
 			}
 		});
 		hpField.setColumns(10);
@@ -146,6 +178,11 @@ public class CreacionPeronaje {
 						arg0.consume();}
 						
 			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				lblRestantes.setText(String.valueOf((200-Integer.parseInt('0'+enefield.getText())-Integer.parseInt('0'+atkField.getText())-Integer.parseInt('0'+defField.getText())
+						-Integer.parseInt('0'+hpField.getText())-Integer.parseInt('0'+evaField.getText()))));
+			}
 		});
 		evaField.setColumns(10);
 		evaField.setBounds(95, 150, 86, 20);
@@ -160,24 +197,39 @@ public class CreacionPeronaje {
 		frame.getContentPane().add(hpLabel);
 		
 		JButton guardarBtn = new JButton("Guardar");
-		guardarBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		guardarBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Control.nuevoPJ(hpField.getText(), defField.getText(), atkField.getText(), evaField.getText(), enefield.getText(), namefield.getText());
 			}
 		});
-		guardarBtn.setBounds(10, 234, 75, 23);
+		guardarBtn.setBounds(10, 264, 87, 23);
 		frame.getContentPane().add(guardarBtn);
 		
 		JButton rtrnBtn = new JButton("Volver");
-		rtrnBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		rtrnBtn.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				frame.dispose();
 			}
 		});
-		rtrnBtn.setBounds(118, 234, 75, 23);
+		
+		rtrnBtn.setBounds(128, 264, 86, 23);
 		frame.getContentPane().add(rtrnBtn);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setBounds(51, 54, 46, 14);
 		frame.getContentPane().add(lblNewLabel_1);
+		
+		JLabel lblPuntosRestantes = new JLabel("Puntos Restantes:");
+		lblPuntosRestantes.setBounds(10, 227, 90, 14);
+		frame.getContentPane().add(lblPuntosRestantes);
+		
+		lblRestantes = new JLabel("restantes");
+		lblRestantes.setBounds(124, 227, 57, 14);
+		frame.getContentPane().add(lblRestantes);
+		lblRestantes.setText(String.valueOf((200-Integer.parseInt('0'+enefield.getText())-Integer.parseInt('0'+atkField.getText())-Integer.parseInt('0'+defField.getText())
+				-Integer.parseInt('0'+hpField.getText())-Integer.parseInt('0'+evaField.getText()))));
 		
 	}
 }

@@ -4,10 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
-import java.awt.BorderLayout;
-import javax.swing.BoxLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Hub {
 
@@ -46,6 +46,14 @@ public class Hub {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnCreacionPj = new JButton("Crear Nuevo");
+		btnCreacionPj.addMouseListener(new MouseAdapter() {
+			@Override
+			
+			public void mouseClicked(MouseEvent arg0) {
+				CreacionPeronaje.main(null);
+				frame.dispose();
+			}
+		});
 		btnCreacionPj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -62,6 +70,12 @@ public class Hub {
 		frame.getContentPane().add(Nada);
 		
 		JButton salir = new JButton("Salir");
+		salir.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				frame.dispose();
+			}
+		});
 		salir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
