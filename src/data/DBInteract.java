@@ -9,7 +9,7 @@ public class DBInteract {
 
 		try {
 		    Class.forName("com.mysql.jdbc.Driver");;
-			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trabajojava?autoReconnect=true&useSSL=false","root","asc354d6"); 
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trabajojava?autoReconnect=true&useSSL=false","root","password"); 
 			PreparedStatement prep = connection.prepareStatement("INSERT INTO `trabajojava`.`personajes` (`nombre`, `atk`, `def`, `ene`, `eva`, `hp`) VALUES (?, ?, ?, ?, ?, ?)");
 		 prep.setString(1, pers.getNombre());
 		 prep.setInt(2, pers.getAtk());
@@ -22,8 +22,7 @@ public class DBInteract {
 		 st= connection.createStatement();
 		 ResultSet res = st.executeQuery("select MAX(idpersonaje) from personajes ;");
 		 if (res.next()){
-		 id=res.getInt(1);
-		 System.out.println(String.valueOf(id));}
+		 id=res.getInt(1);}
 		 
 		 
 		} 
@@ -33,27 +32,45 @@ public class DBInteract {
 		}
 		catch (ClassNotFoundException e) {System.out.println("CLASSException");id=0;};
 		return id;}
-	public static void main(String[] args) {
-		int id;
-		
-
+	public static boolean controlNombre(String nombre){
+		int count;
 		try {
 		    Class.forName("com.mysql.jdbc.Driver");;
-			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trabajojava?autoReconnect=true&useSSL=false","root","asc354d6"); 
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trabajojava?autoReconnect=true&useSSL=false","root","password"); 
 			Statement st;
 		 st= connection.createStatement();
-		 ResultSet res = st.executeQuery("select MAX(idpersonaje) from personajes ;");
+		 ResultSet res = st.executeQuery("select count(*) from personajes WHERE nombre="+nombre+" ;");
 		 if (res.next()){
-		 id=res.getInt(1);
-		 System.out.println(String.valueOf(id));}
+		 count=res.getInt(1);
+		 return count==0;}
 		 
 		 
 		} 
 		catch (SQLException e) {
-			id=0;
-			 System.out.println("Exception");
+			count=1;
+			 System.out.println("SQLException");
 		}
-		catch (ClassNotFoundException e) {System.out.println("Exception1");};
-		id= 0; }
+		catch (ClassNotFoundException e) {System.out.println("CLASSException");};
+		    count=1; 
+		
+		return true;};
+	public static ResultSet buscaTodos()
+	{	ResultSet res=null;
+		try {
+		    Class.forName("com.mysql.jdbc.Driver");;
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trabajojava?autoReconnect=true&useSSL=false","root","password"); 
+			Statement st;
+		 st= connection.createStatement();
+		 res = st.executeQuery("SELECT idpersonaje, nombre, atk, def, ene, eva, hp FROM trabajojava.personajes;");
+		 	} 
+		catch (SQLException e) {
+			;
+			 System.out.println("SQLException");
+		}
+		catch (ClassNotFoundException e) {System.out.println("CLASSException");}; 
+		return res;
+	};
 
 }
+
+

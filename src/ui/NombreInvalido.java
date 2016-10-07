@@ -85,7 +85,7 @@ public class NombreInvalido {
 		frame.getContentPane().add(btnVolverAMen);
 		
 		JLabel labelID = new JLabel("ID");
-		labelID.setBounds(64, 43, 68, 14);
+		labelID.setBounds(23, 62, 97, 14);
 		frame.getContentPane().add(labelID);
 		System.out.println(String.valueOf(id));
 		labelID.setText("nombre Invalido");
