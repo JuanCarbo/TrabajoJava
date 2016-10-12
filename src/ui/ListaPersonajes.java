@@ -7,15 +7,18 @@ import javax.swing.JList;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.TableColumn;
+
+import entidades.Personaje;
+
 import javax.swing.JScrollBar;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class ListaPersonajes {
 
 	private JFrame frame;
-	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -49,16 +52,6 @@ public class ListaPersonajes {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		table = new JTable();
-		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		table.setBounds(0, 0, 418, 386);
-		frame.getContentPane().add(table);
-		
-		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setBounds(416, 0, 17, 386);
-		frame.getContentPane().add(scrollBar);
-		
 		JButton btnNewButton = new JButton("Eliminar");
 		btnNewButton.setBounds(10, 407, 89, 23);
 		frame.getContentPane().add(btnNewButton);
@@ -70,5 +63,9 @@ public class ListaPersonajes {
 		JButton btnModificar = new JButton("Modificar");
 		btnModificar.setBounds(176, 407, 89, 23);
 		frame.getContentPane().add(btnModificar);
+		
+		JList<Personaje> list = new JList<Personaje>(data.DBInteract.buscaTodos());
+		list.setBounds(10, 11, 414, 385);
+		frame.getContentPane().add(list);
 	}
 }

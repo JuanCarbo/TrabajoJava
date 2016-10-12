@@ -9,6 +9,14 @@ public class Personaje {
 	private int id;
 	private int atk, def, ene, eva, hp;
 	private String nombre;
+	public Personaje(int ID,int HP,int DEF,int EVA,int ATK, int ENE,String NOM){
+		this.id=ID;
+		this.hp=HP;
+		this.atk=ATK;
+		this.def=DEF;
+		this.ene=ENE;
+		this.eva=EVA;
+		this.nombre=NOM;}
 
 	public Personaje(int HP,int DEF,int EVA,int ATK, int ENE,String NOM){
 		this.hp=HP;
@@ -61,5 +69,9 @@ public class Personaje {
 		this.nombre = nombre;
 	}
 	
+	public String toString() {
+		return "Personaje [id=" + id + ", " + (nombre != null ? "nombre=" + nombre : "") + ", atk=" + atk + ", def=" + def + ", ene=" + ene + ", eva=" + eva + ", hp=" + hp
+				+  "]";
+	}	
 
 }
