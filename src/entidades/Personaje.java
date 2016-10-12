@@ -70,7 +70,7 @@ public class Personaje {
 	}
 	
 	public String toString() {
-		return "Personaje [id=" + id + ", " + (nombre != null ? "nombre=" + nombre : "") + ", atk=" + atk + ", def=" + def + ", ene=" + ene + ", eva=" + eva + ", hp=" + hp
+		return (nombre != null ?  nombre : "") + "[id=" + id + ", atk=" + atk + ", def=" + def + ", ene=" + ene + ", eva=" + eva + ", hp=" + hp
 				+  "]";
 	}	
 
