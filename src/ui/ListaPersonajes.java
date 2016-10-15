@@ -52,19 +52,16 @@ public class ListaPersonajes {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JButton btnNewButton = new JButton("Eliminar");
-		btnNewButton.setBounds(10, 407, 89, 23);
-		frame.getContentPane().add(btnNewButton);
-		
 		JButton btnNewButton_1 = new JButton("Volver");
 		btnNewButton_1.setBounds(335, 407, 89, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnModificar = new JButton("Modificar");
-		btnModificar.setBounds(176, 407, 89, 23);
+		btnModificar.setBounds(10, 407, 89, 23);
 		frame.getContentPane().add(btnModificar);
 		
 		JList<Personaje> list = new JList<Personaje>(data.DBInteract.buscaTodos());
+		//JList<Personaje> list = new JList<Personaje>();
 		list.setBounds(10, 11, 414, 385);
 		frame.getContentPane().add(list);
 	}

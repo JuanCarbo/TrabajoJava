@@ -76,7 +76,6 @@ public class DBInteract {
 			Personaje p= new Personaje(res.getInt("idpersonaje"), res.getInt("hp"),res.getInt("def"), res.getInt("eva"), res.getInt("atk"), res.getInt("ene"), res.getString("nombre"));
 			per[i]=p;
 			i++;
-			System.out.println(p);
 		};
 		res.close();
 		numero.close();

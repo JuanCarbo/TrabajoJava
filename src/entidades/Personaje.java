@@ -70,8 +70,8 @@ public class Personaje {
 	}
 	
 	public String toString() {
-		return (nombre != null ?  nombre : "") + "[id=" + id + ", atk=" + atk + ", def=" + def + ", ene=" + ene + ", eva=" + eva + ", hp=" + hp
-				+  "]";
+		return (nombre != null ?  nombre : "    ") + "    id=" + id + "     atk=" + atk + "     def=" + def + "    ene=" + ene + "    eva=" + eva + "    hp=" + hp
+				+  "";
 	}	
 
 }

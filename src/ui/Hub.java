@@ -66,6 +66,13 @@ public class Hub {
 		frame.getContentPane().add(btnPelea);
 		
 		JButton Nada = new JButton("Lista Pjs");
+		Nada.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				ListaPersonajes.main(null);
+				frame.dispose();
+			}
+		});
 		Nada.setBounds(60, 176, 107, 23);
 		frame.getContentPane().add(Nada);
 		
