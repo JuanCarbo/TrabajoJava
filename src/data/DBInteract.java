@@ -41,7 +41,7 @@ public class DBInteract {
 			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trabajojava?autoReconnect=true&useSSL=false","root","password"); 
 			Statement st;
 		 st= connection.createStatement();
-		 ResultSet res = st.executeQuery("select count(*) from personajes WHERE nombre="+nombre+" ;");
+		 ResultSet res = st.executeQuery("select count(*) from personajes WHERE nombre='"+nombre+"' ;");
 		 if (res.next()){
 		 count=res.getInt(1);
 		 return count==0;}
@@ -144,6 +144,29 @@ public class DBInteract {
 			}
 			catch (ClassNotFoundException e) {System.out.println("CLASSException");id=0;};
 			return id;}
+	public static Personaje buscaUno(int id)
+	{	Personaje per=null;
+	ResultSet res=null;
+		try {
+		    Class.forName("com.mysql.jdbc.Driver");;
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/trabajojava?useSSL=false","root","password"); 
+			Statement st;
+			Statement nu=connection.createStatement();
+		 st= connection.createStatement();
+		 res = st.executeQuery("SELECT idpersonaje, nombre, atk, def, ene, eva, hp FROM trabajojava.personajes where idpersonaje = "+String.valueOf(id)+" ;");
+		while (res.next()){
+			Personaje p= new Personaje(res.getInt("idpersonaje"), res.getInt("hp"),res.getInt("def"), res.getInt("eva"), res.getInt("atk"), res.getInt("ene"), res.getString("nombre"));
+			per=p;
+		};
+		res.close();
+		 	} 
+		catch (SQLException e) {
+			;
+			 System.out.println("SQLException en buscatodos "+ e.getMessage());
+		}
+		catch (ClassNotFoundException e) {System.out.println("CLASSException");}; 
+		return per;
+	};
 
 }
 

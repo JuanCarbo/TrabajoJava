@@ -92,7 +92,10 @@ public class Combate {
 						{
 						arg0.consume();}
 						};});
-		
+		JButton btnAtacar = new JButton("Atacar");
+		JButton btnAtacar2 = new JButton("Atacar");
+		JButton btnDefender2 = new JButton("Defender");
+		JButton btnDefender = new JButton("Defender");
 		JLabel lblNewLabel = new JLabel("Gasto Energia");
 		lblNewLabel.setBounds(10, 200, 84, 14);
 		frame.getContentPane().add(lblNewLabel);
@@ -205,31 +208,84 @@ public class Combate {
 		lblAtkN2.setBounds(311, 175, 50, 14);
 		frame.getContentPane().add(lblAtkN2);
 		
-		JButton btnAtacar = new JButton("Atacar");
 		btnAtacar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int ener = Integer.getInteger("0");
-				System.out.println("esto se ejecuto");
+				if (btnAtacar.isEnabled()){
+				int ener = Integer.parseInt("0"+fieldEne.getText());
+				if (ener<=per.getEne()) {
 				Control.turnocombate(per, per2, ener);
 				if (Control.muerte(per2))
-				{};
+				{Victoria.victoria(per);
+				frame.dispose();};
+				btnAtacar.setEnabled(false);
+				btnDefender.setEnabled(false);
+				btnAtacar2.setEnabled(true);
+				btnDefender2.setEnabled(true);
+				lblHpN2.setText(String.valueOf(per2.getHp()));
+				lblEneN.setText(String.valueOf(per.getEne()));}}
 			}
 		});
 		
 		btnAtacar.setBounds(10, 238, 89, 23);
 		frame.getContentPane().add(btnAtacar);
 		
-		JButton btnDefender = new JButton("Defender");
+		btnDefender.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (btnDefender.isEnabled()){
+				Control.defiende(per);
+
+				btnAtacar.setEnabled(false);
+				btnDefender.setEnabled(false);
+				btnAtacar2.setEnabled(true);
+				btnDefender2.setEnabled(true);
+				lblHpN.setText(String.valueOf(per.getHp()));
+				lblEneN.setText(String.valueOf(per.getEne()));
+			}}
+		});
 		btnDefender.setBounds(101, 238, 89, 23);
 		frame.getContentPane().add(btnDefender);
 		
-		JButton btnAtacar2 = new JButton("Atacar");
+		btnAtacar2.setEnabled(false);
+		btnAtacar2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (btnAtacar2.isEnabled()){
+				int ener = Integer.parseInt("0"+fieldEne2.getText());
+				if (ener<=per2.getEne()) {
+				Control.turnocombate(per2, per, ener);
+				if (Control.muerte(per))
+				{Victoria.victoria(per2);
+				frame.dispose();};
+				btnAtacar.setEnabled(true);
+				btnDefender.setEnabled(true);
+				btnAtacar2.setEnabled(false);
+				btnDefender2.setEnabled(false);
+				lblHpN.setText(String.valueOf(per.getHp()));
+				lblEneN2.setText(String.valueOf(per2.getEne()));}
+			}}
+		});
 
 		btnAtacar2.setBounds(211, 238, 89, 23);
 		frame.getContentPane().add(btnAtacar2);
 		
-		JButton btnDefender2 = new JButton("Defender");
+		btnDefender2.setEnabled(false);
+		btnDefender2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (btnDefender2.isEnabled()){
+				Control.defiende(per2);
+
+				btnAtacar.setEnabled(true);
+				btnDefender.setEnabled(true);
+				btnAtacar2.setEnabled(false);
+				btnDefender2.setEnabled(false);
+				lblHpN2.setText(String.valueOf(per2.getHp()));
+				lblEneN2.setText(String.valueOf(per2.getEne()));
+				
+			}}
+		});
 		btnDefender2.setBounds(301, 238, 89, 23);
 		frame.getContentPane().add(btnDefender2);
 		
