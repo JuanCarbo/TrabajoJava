@@ -9,7 +9,7 @@ import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ConfirmacionPje {
+public class ConfirmacionMod {
 
 	private JFrame frame;
 
@@ -21,7 +21,7 @@ public class ConfirmacionPje {
 			public void run() {
 				try {
 					int ide = 0;
-					ConfirmacionPje window = new ConfirmacionPje(ide);
+					ConfirmacionMod window = new ConfirmacionMod(ide);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,7 +33,7 @@ public class ConfirmacionPje {
 			EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ConfirmacionPje window = new ConfirmacionPje(ide);
+					ConfirmacionMod window = new ConfirmacionMod(ide);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,7 +45,7 @@ public class ConfirmacionPje {
 	/**
 	 * Create the application.
 	 */
-	public ConfirmacionPje(int ide) {
+	public ConfirmacionMod(int ide) {
 		initialize(ide);
 	}
 
@@ -58,7 +58,7 @@ public class ConfirmacionPje {
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Personaje creado.");
+		JLabel lblNewLabel = new JLabel("Personaje modificado.");
 		lblNewLabel.setBounds(23, 11, 97, 14);
 		frame.getContentPane().add(lblNewLabel);
 		
@@ -66,7 +66,7 @@ public class ConfirmacionPje {
 		btnCrearOtro.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				CreacionPeronaje.main(null);
+				ListaPersonajes.main(null);
 				frame.dispose();
 			}
 		});

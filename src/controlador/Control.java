@@ -1,6 +1,7 @@
 package controlador;
 
 import ui.NombreInvalido;
+import entidades.Personaje;
 
 public class Control {
 
@@ -27,7 +28,23 @@ public class Control {
 			return id;}
 		public void turnoCombate(){};
 		public static void inicializaDB(){};
-		
+		public static int modificaPJ(Personaje per){
+			//convierte datos de entrada a unidades pertinentes, Verifica reglas de puntos maximos y nombre.
+			int id=per.getId();
+			int HP=per.getHp();
+			int DEF=per.getDef();
+			int ATK=per.getAtk();
+			int EVA=per.getEva();
+			int ENE=per.getEne();
+			String NOM=per.getNombre();
+			if (NOM==null || data.DBInteract.controlNombreMod(NOM, id) ) {NombreInvalido.main(null);}
+			else{
+				if (HP+DEF+ATK+EVA+ENE<=200 && DEF<=20 && EVA<=80) {
+					// Esto ya funciona
+					id=data.DBInteract.modificaPers(per);
+					ui.ConfirmacionMod.confirma(id);};}
+			
+			return id;}
 		
 }
 

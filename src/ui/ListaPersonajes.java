@@ -4,17 +4,12 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JList;
-import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.TableColumn;
 
 import entidades.Personaje;
 
-import javax.swing.JScrollBar;
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ListaPersonajes {
 
@@ -53,10 +48,18 @@ public class ListaPersonajes {
 		frame.getContentPane().setLayout(null);
 		
 		JButton btnNewButton_1 = new JButton("Volver");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Hub.main(null);
+				frame.dispose();
+			}
+		});
 		btnNewButton_1.setBounds(335, 407, 89, 23);
 		frame.getContentPane().add(btnNewButton_1);
 		
 		JButton btnModificar = new JButton("Modificar");
+		
 		btnModificar.setBounds(10, 407, 89, 23);
 		frame.getContentPane().add(btnModificar);
 		
@@ -64,5 +67,14 @@ public class ListaPersonajes {
 		//JList<Personaje> list = new JList<Personaje>();
 		list.setBounds(10, 11, 414, 385);
 		frame.getContentPane().add(list);
+		btnModificar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if (list.getSelectedValue()!=null){
+				Personaje per = list.getSelectedValue();
+				ModificacionPersonaje.modifica(per);
+				frame.dispose();}
+			}
+		});
 	}
 }
