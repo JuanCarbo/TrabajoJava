@@ -40,11 +40,39 @@ public class Control {
 			if (NOM==null || data.DBInteract.controlNombreMod(NOM, id) ) {NombreInvalido.main(null);}
 			else{
 				if (HP+DEF+ATK+EVA+ENE<=200 && DEF<=20 && EVA<=80) {
-					// Esto ya funciona
 					id=data.DBInteract.modificaPers(per);
 					ui.ConfirmacionMod.confirma(id);};}
 			
 			return id;}
+		public static Personaje[] turnocombate(Personaje perAtk, Personaje perRec, int energastada) 
+		{ 
+			int atk = perAtk.getAtk();
+			int ene = perAtk.getEne();
+			int hp = perRec.getHp();
+			int eva = perRec.getEva();
+			
+			if (energastada<ene)
+				{ene=ene-energastada;
+				if (Math.random()*100>eva)
+			{
+				hp=hp-atk;
+			}};
+			perAtk.setEne(ene);
+			perRec.setHp(hp);
+			Personaje[] pers=new Personaje[2];
+			pers[1]=perAtk;
+			pers[2]=perRec;
+			return null;
+		};
+		public static boolean muerte(Personaje per){
+			if (per.getHp()<=0) {
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		
 		
 }
 

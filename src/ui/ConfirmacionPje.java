@@ -54,6 +54,7 @@ public class ConfirmacionPje {
 	 */
 	private void initialize(int id) {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 158, 194);
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);

@@ -41,6 +41,7 @@ public class Hub {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -62,6 +63,13 @@ public class Hub {
 		frame.getContentPane().add(btnCreacionPj);
 		
 		JButton btnPelea = new JButton("Iniciar combate");
+		btnPelea.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				SeleccionPj.main(null);
+				frame.dispose();
+			}
+		});
 		btnPelea.setBounds(249, 45, 124, 23);
 		frame.getContentPane().add(btnPelea);
 		
@@ -85,6 +93,7 @@ public class Hub {
 		});
 		salir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
 			}
 		});
 		salir.setBounds(249, 176, 124, 23);
